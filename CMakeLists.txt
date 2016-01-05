@@ -1,4 +1,5 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 2.6)
+SET(CXX_DISABLE_WERROR TRUE)
 INCLUDE(cmake/base.cmake)
 SET(PROJECT_NAME hpp_dynamic)
 SET(PROJECT_DESCRIPTION
@@ -14,6 +15,7 @@ SET(${PROJECT_NAME}_HEADERS
 # Create and install executable running the corba server
 ADD_EXECUTABLE (hpp-dyn-server
   src/dynPlanner.cc
+  src/hpp-dyn-server.cc
 )
 # Link executable with hpp-corbaserver library
 PKG_CONFIG_USE_DEPENDENCY (hpp-dyn-server hpp-corbaserver)

@@ -2,7 +2,6 @@
 #include <hpp/util/pointer.hh>
 #include <hpp/dyn/dynPlanner.hh>
 
-
 // main function of the corba server
 int main (int argc, const char* argv[])
 {
@@ -12,7 +11,8 @@ int main (int argc, const char* argv[])
   hpp::core::ProblemSolverPtr_t problemSolver =   hpp::core::ProblemSolver::create ();
   // Add the new planner type in order to be able to select it from python
   // client.
-  problemSolver->addPathPlannerType ("dyn", hpp::dyn::DynPlanner::create);
+
+  problemSolver->addPathPlannerType ("dyn", hpp::core::DynPlanner::createWithRoadmap);
   // Create the CORBA server.
   hpp::corbaServer::Server server (problemSolver, argc, argv, true);
   // Start the CORBA server.
